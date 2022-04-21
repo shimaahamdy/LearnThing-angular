@@ -1,1 +1,17 @@
-<p>products works!</p>
+<div class="card" style="width: 18rem;">
+    <img [src]="storeInfo.imgURL" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{storeInfo.name}}</h5>
+      <p class="card-text">our Branches</p>
+
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let item of storeInfo.branches">
+            {{item}}
+        </li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Join</a>
+    </div>
+  </div>
+

@@ -1,0 +1,48 @@
+<div class="mb-3">
+    <label for="" class="form-label">Category</label>
+    <select #cat class="form-control" name="" id="prdCat" [(ngModel)] = "selecedCategoryid">
+      <option *ngFor="let item of catList" [value]="item.id">{{item.name}}</option>
+  
+    </select>
+  </div>
+  <div>
+      test 2-way binding {{selecedCategoryid}}
+  </div>
+<section>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6 col-xl-4 mt-1 mb-2" *ngFor="let item of prodList" [class.d-none]="selecedCategoryid != item.categoryID">
+            <div class="card text-black">
+              <img
+                [src]="item.imgURL"
+                class="card-img-top"
+                alt=""
+              />
+              <div class="card-body">
+                <div class="text-center">
+                  <h5 class="card-title">{{item.name}}</h5>
+                  <p class="text-muted mb-4">{{item.categoryID}}</p>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between">
+                    <span>Price</span><span>{{item.price}}</span>
+                  </div>
+                  <div class="d-flex justify-content-between" [class.bg-danger]="item.quantity==0">
+                    <span>Quantity</span><span>{{item.quantity}}</span>
+                  </div>
+                 </div>
+                 <!-- template varibale can be used inseted of selectbyid -->
+                 <!-- <input #itemcount type="number">
+                 <button class="btn btn-primary" (click)="join(item.id,itemcount.value)">Join</button> -->
+
+                 <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                  <button class="btn btn-primary" >Join</button>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
