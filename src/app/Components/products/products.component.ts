@@ -9,7 +9,8 @@ import { Store } from 'src/app/ViewModels/store';
 export class ProductsComponent implements OnInit {
   storeInfo: Store
   constructor() { 
-    this.storeInfo = new Store("Udacity","https://gfx4arab.com/wp-content/uploads/2020/06/udacity.svg",["US","UK","EG"])
+    this.storeInfo = new Store("Udacity","https://gfx4arab.com/wp-content/uploads/2020/06/udacity.svg",["US","UK","EG"]);
+    
   }
 
   ngOnInit(): void {

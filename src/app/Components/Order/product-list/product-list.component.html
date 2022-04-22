@@ -11,8 +11,18 @@
 <section>
     <div class="container py-5">
         <div class="row justify-content-center">
-          <div class="col-md-8 col-lg-6 col-xl-4 mt-1 mb-2" *ngFor="let item of prodList" [class.d-none]="selecedCategoryid != item.categoryID">
-            <div class="card text-black">
+          <!-- ngif reload dom from start
+          but [[hidden] or any class binding make just 
+        disapear without having to reload it again-->
+          <!-- if we have to use 2directive
+          we use ng-container with for and 
+          ngif with tr
+          --we can not use 2directive with same elemnt -->
+          <!-- <div class="col-md-8 col-lg-6 col-xl-4 mt-1 mb-2" *ngFor="let item of prodList; let i = index" [class.d-none]="selecedCategoryid != item.categoryID"> -->
+          <!-- <div class="col-md-8 col-lg-6 col-xl-4 mt-1 mb-2" *ngFor="let item of prodList; let i = index;trackBy:trackfun;" [hidden]="item.quantity==0"> -->
+               <div class="col-md-8 col-lg-6 col-xl-4 mt-1 mb-2" *ngFor="let item of prodList; let i = index;trackBy:trackfun;"> 
+                 <!-- <div class="card text-black" appLightBox highlighted="red"> -->
+                 <div class="card text-black" appLightBox defaultColor="red">
               <img
                 [src]="item.imgURL"
                 class="card-img-top"
@@ -21,16 +31,40 @@
               <div class="card-body">
                 <div class="text-center">
                   <h5 class="card-title">{{item.name}}</h5>
-                  <p class="text-muted mb-4">{{item.categoryID}}</p>
+                  <p class="text-muted mb-4"> {{item.categoryID}}</p>
+                  <!-- ngcontainer doesn not exist as element in dom, it is just
+                  render with chosen element instead of use div -->
+                  <ng-container [ngSwitch]="item.categoryID">
+                    <p *ngSwitchCase="1" class="text-muted mb-4"> C++</p>
+                    <p *ngSwitchCase="2" class="text-muted mb-4"> .Net</p>
+                    <p *ngSwitchDefault class="text-muted mb-4"> no Catefory</p>
+                  </ng-container>
+                  <p class="text-muted mb-4"> {{i+1}}</p>
                 </div>
                 <div>
                   <div class="d-flex justify-content-between">
-                    <span>Price</span><span>{{item.price}}</span>
+                    <!-- {{item.price |currency}}
+                    that is called pipes 
+                  pipes applied on values to change it according to -->
+                    <span>Price</span><span>{{item.price |currency:'EGP'}}</span>
                   </div>
-                  <div class="d-flex justify-content-between" [class.bg-danger]="item.quantity==0">
+                  <div class="d-flex justify-content-between">
+                    <span>Price</span><span>{{item.price|EGPToUSD |currency:'USD'}}</span>
+                  </div>
+                  <!-- <div class="d-flex justify-content-between" [class.bg-danger]="item.quantity==0">
                     <span>Quantity</span><span>{{item.quantity}}</span>
                   </div>
-                 </div>
+                 </div> -->
+                 <div *ngIf="item.quantity!=0; else outofstock" class="d-flex justify-content-between" [class.bg-danger]="item.quantity==0">
+                  <span>Quantity</span><span>{{item.quantity}}</span>
+                </div>
+                <ng-template #outofstock>
+                  <!-- <div class="d-flex justify-content-between" [class.bg-danger]="item.quantity==0"> -->
+                  <div class="d-flex justify-content-between" [ngClass]="{'bg-danger':item.quantity==0,'text-primary':item.quantity!=0}">
+                    <span>Quantity</span><span>Out of Stock</span>
+                  </div>
+                </ng-template>
+               </div>
                  <!-- template varibale can be used inseted of selectbyid -->
                  <!-- <input #itemcount type="number">
                  <button class="btn btn-primary" (click)="join(item.id,itemcount.value)">Join</button> -->
