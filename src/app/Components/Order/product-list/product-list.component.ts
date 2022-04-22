@@ -10,6 +10,7 @@ import { Iproduct } from 'src/app/Models/iproduct';
 export class ProductListComponent implements OnInit {
 
   prodList:Iproduct[];
+  prodFilter:Iproduct[]=[];
   catList:ICategory[];
   selecedCategoryid:number = 0;
   constructor() { 
@@ -27,6 +28,7 @@ export class ProductListComponent implements OnInit {
       {id:2,name:'.net'},
       {id:3,name:'c#'}
     ];
+    this.prodFilter = this.prodList;
   }
  
   ngOnInit(): void {
@@ -35,6 +37,12 @@ export class ProductListComponent implements OnInit {
   trackfun(index:number, prd:Iproduct):number
   {
     return prd.id;
+  }
+
+  filterProducts()
+  {
+    this.prodFilter = this.prodList.filter(prd=>prd.categoryID==this.selecedCategoryid);
+
   }
 
 }

@@ -1,6 +1,6 @@
 <div class="mb-3">
     <label for="" class="form-label">Category</label>
-    <select #cat class="form-control" name="" id="prdCat" [(ngModel)] = "selecedCategoryid">
+    <select #cat class="form-control" name="" id="prdCat" [(ngModel)] = "selecedCategoryid" (change)="filterProducts()">
       <option *ngFor="let item of catList" [value]="item.id">{{item.name}}</option>
   
     </select>
@@ -20,7 +20,7 @@
           --we can not use 2directive with same elemnt -->
           <!-- <div class="col-md-8 col-lg-6 col-xl-4 mt-1 mb-2" *ngFor="let item of prodList; let i = index" [class.d-none]="selecedCategoryid != item.categoryID"> -->
           <!-- <div class="col-md-8 col-lg-6 col-xl-4 mt-1 mb-2" *ngFor="let item of prodList; let i = index;trackBy:trackfun;" [hidden]="item.quantity==0"> -->
-               <div class="col-md-8 col-lg-6 col-xl-4 mt-1 mb-2" *ngFor="let item of prodList; let i = index;trackBy:trackfun;"> 
+               <div class="col-md-8 col-lg-6 col-xl-4 mt-1 mb-2" *ngFor="let item of prodFilter; let i = index;trackBy:trackfun;"> 
                  <!-- <div class="card text-black" appLightBox highlighted="red"> -->
                  <div class="card text-black" appLightBox defaultColor="red">
               <img

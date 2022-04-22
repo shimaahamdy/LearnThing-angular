@@ -1,9 +1,15 @@
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Directive({
   selector: '[appLightBox]'
 })
-export class LightBoxDirective {
+
+/* directive usings:
+-vaildation
+-masked input
+-change dom view on any element we wany and applay events
+*/
+export class LightBoxDirective implements OnChanges {
 
   // propertey decrator
   //if we want pass some values form user
@@ -16,9 +22,17 @@ export class LightBoxDirective {
   // @Input('applightbox') highlighted:string="yellow";
   @Input() defaultColor:string="blue";
   constructor(private Elment:ElementRef) {
-    this.Elment.nativeElement.style = `box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 ${this.defaultColor}`;
+    //show blue highlight: in constructor
+    // this.Elment.nativeElement.style = `box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 ${this.defaultColor}`;
 
     
+  }
+  //call atomatic after constructor according to component life cycle
+  //used specially with input decrator
+  //constructor can not read if any change happen to input decrators it can be seen on in chang
+  ngOnChanges(): void {
+        //show grey that was send in view in  highlight from begining
+    // this.Elment.nativeElement.style = `box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 ${this.defaultColor}`;
   }
 
   //we can handle any event happen on that 
@@ -30,10 +44,10 @@ export class LightBoxDirective {
   @HostListener('mouseover') onMouseOver()
   {
     
-    // this.Elment.nativeElement.style = "box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
+    this.Elment.nativeElement.style = "box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
     //  this.Elment.nativeElement.style = `box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 ${this.highlighted}`;
     //
-    this.Elment.nativeElement.style = `box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 ${this.defaultColor}`;
+    // this.Elment.nativeElement.style = `box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 ${this.defaultColor}`;
 
 
   }
