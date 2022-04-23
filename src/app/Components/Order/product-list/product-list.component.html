@@ -1,13 +1,13 @@
-<div class="mb-3">
+<!-- <div class="mb-3">
     <label for="" class="form-label">Category</label>
     <select #cat class="form-control" name="" id="prdCat" [(ngModel)] = "selecedCategoryid" (change)="filterProducts()">
       <option *ngFor="let item of catList" [value]="item.id">{{item.name}}</option>
   
     </select>
-  </div>
-  <div>
+  </div> -->
+  <!-- <div>
       test 2-way binding {{selecedCategoryid}}
-  </div>
+  </div> -->
 <section>
     <div class="container py-5">
         <div class="row justify-content-center">
@@ -70,7 +70,7 @@
                  <button class="btn btn-primary" (click)="join(item.id,itemcount.value)">Join</button> -->
 
                  <div class="d-flex justify-content-between total font-weight-bold mt-4">
-                  <button class="btn btn-primary" >Join</button>
+                  <button class="btn btn-primary" (click)="addToCart(item)" >add to cart</button>
                 </div> 
               </div>
             </div>
@@ -78,5 +78,6 @@
         </div>
       </div>
     </section>
+   
 
 

@@ -11,6 +11,8 @@ import { ProductListComponent } from './Components/Order/product-list/product-li
 import { FormsModule } from '@angular/forms';
 import { LightBoxDirective } from './Directives/light-box.directive';
 import { EGPToUSDPipe } from './Pipes/egpto-usd.pipe';
+import { ShoppingCartComponent } from './Components/Order/shopping-cart/shopping-cart.component';
+import { OrderMakingComponent } from './Components/Order/order-making/order-making.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { EGPToUSDPipe } from './Pipes/egpto-usd.pipe';
     FooterComponent,
     ProductListComponent,
     LightBoxDirective,
-    EGPToUSDPipe
+    EGPToUSDPipe,
+    ShoppingCartComponent,
+    OrderMakingComponent
   ],
   imports: [
     BrowserModule,
