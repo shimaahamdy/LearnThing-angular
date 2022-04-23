@@ -3,5 +3,6 @@ export interface ICartViewModel {
     name:string,
     quantity:number,
     unitPrice:number,
-    imgURL:string;
+    imgURL:string,
+    totalPrice:number;
 }

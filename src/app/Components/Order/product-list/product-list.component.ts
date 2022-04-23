@@ -57,10 +57,22 @@ export class ProductListComponent implements OnInit ,OnChanges{
   addToCart(item:Iproduct)
   {
     const cartModel:ICartViewModel = 
-    {id:item.id,name:item.name,quantity:1,unitPrice:item.price,imgURL:item.imgURL}
+    {id:item.id,name:item.name,quantity:1,unitPrice:item.price,imgURL:item.imgURL,totalPrice:1*item.price}
     console.log(cartModel);
    this.addToCartItem.emit(cartModel);
    
+  }
+
+  completeOrder(orderItems:ICartViewModel[])
+  {
+    for(let item of orderItems)
+    {
+      this.prodList.find(prd=> prd.id == item.id)!.quantity-=item.quantity;
+    }
+  }
+  getQuantity(item:ICartViewModel)
+  {
+    return this.prodList.find(prd=> prd.id == item.id)!.quantity;
   }
 
 }
