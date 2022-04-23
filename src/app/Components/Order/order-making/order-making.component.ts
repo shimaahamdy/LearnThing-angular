@@ -3,6 +3,7 @@ import { toPublicName } from '@angular/compiler/src/i18n/serializers/xmb';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ICategory } from 'src/app/Models/icategory';
 import { Iproduct } from 'src/app/Models/iproduct';
+import { StaticProductsService } from 'src/app/Services/static-products.service';
 import { ICartViewModel } from 'src/app/ViewModels/IcartViewModel';
 import { ProductListComponent } from '../product-list/product-list.component';
 
@@ -21,9 +22,11 @@ export class OrderMakingComponent implements OnInit {
   selectedItem:ICartViewModel[]=[];
 
   // viewchild: used to ref any element in view that has template variable
-   @ViewChild(ProductListComponent) prdLlist!: ProductListComponent; //that will not be ever with null or undefine value when it used
+  //  @ViewChild(ProductListComponent) prdLlist!: ProductListComponent; //that will not be ever with null or undefine value when it used
    //above we can see  object of ts class of prdlist
-  constructor() { 
+
+   //now we don`t need view child as it is sperate service
+  constructor(private staProdServ:StaticProductsService) { 
     this.catList = [
       {id:1,name:"oop"},
       {id:2,name:'.net'},
@@ -36,22 +39,22 @@ export class OrderMakingComponent implements OnInit {
 
   bought(item:ICartViewModel)
   {
-   
     this.orderItems.push(item);
-    this.totalPrice+=item.unitPrice;
+    this.updateTotalPrice();
     
   }
   changeQuantity(event:any,item:ICartViewModel)
   {
     let quan:number = parseInt(event.target.value)
-    if(this.prdLlist.getQuantity(item)>=quan)
+    let itemQuantity = this.staProdServ.getQuantity(item.id);
+    if(itemQuantity && itemQuantity>=quan)
     {
     if( quan>item.quantity)
     {
       
        let diff:number=0;
        diff = quan-item.quantity;
-       this.totalPrice+=diff*item.unitPrice;
+     
        
 
     }
@@ -59,12 +62,20 @@ export class OrderMakingComponent implements OnInit {
     {
       let diff:number=0;
        diff = item.quantity-quan;
-       this.totalPrice-=diff*item.unitPrice;
+
     }
     item.totalPrice=quan*item.unitPrice;
     item.quantity=quan;
+
+    this.updateTotalPrice();
   }
     
+  }
+  private updateTotalPrice()
+  {
+    this.totalPrice=0;
+    for(let item of this.orderItems)
+    this.totalPrice+=item.totalPrice;
   }
   getProdPrice(item:ICartViewModel)
   {
@@ -77,12 +88,11 @@ export class OrderMakingComponent implements OnInit {
   }
   complete()
   {
-    this.prdLlist.completeOrder(this.orderItems);
+    this.staProdServ.completeOrder(this.orderItems);
   }
   getQuantity(item:ICartViewModel)
   {
-    console.log(this.prdLlist.getQuantity(item));
-    return this.prdLlist.getQuantity(item);
+    return this.staProdServ.getQuantity(item.id);
 
   }
  

@@ -69,8 +69,8 @@
                  <!-- <input #itemcount type="number">
                  <button class="btn btn-primary" (click)="join(item.id,itemcount.value)">Join</button> -->
 
-                 <div class="d-flex justify-content-between total font-weight-bold mt-4">
-                  <button class="btn btn-primary" (click)="addToCart(item)" >add to cart</button>
+                 <div class="d-flex justify-content-between total font-weight-bold mt-4" >
+                  <button class="btn btn-primary" (click)="addToCart(item)" [hidden]="item.quantity==0">add to cart</button>
                 </div> 
               </div>
             </div>
