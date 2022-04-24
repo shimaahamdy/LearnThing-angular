@@ -41,6 +41,7 @@ export class ProductListComponent implements OnInit ,OnChanges{
   }
  
   ngOnInit(): void {
+    this.prodFilter = this.staticProdServ.getAllProducts();
     
   }
 
@@ -56,7 +57,7 @@ export class ProductListComponent implements OnInit ,OnChanges{
 
   addToCart(item:Iproduct)
   {
-    const cartModel:ICartViewModel = 
+   let cartModel:ICartViewModel = 
     {id:item.id,name:item.name,quantity:1,unitPrice:item.price,imgURL:item.imgURL,totalPrice:1*item.price}
     console.log(cartModel);
    this.addToCartItem.emit(cartModel);
