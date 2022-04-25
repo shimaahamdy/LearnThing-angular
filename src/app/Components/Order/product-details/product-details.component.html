@@ -1,0 +1,98 @@
+<!-- <div class="p-0 mr-5">
+<div class="row d-flex justify-content-center mt-5">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="images p-3">
+                            <div class="text-center p-4"> <img id="main-image" [src]="product?.imgURL" width="250" /> </div> -->
+                            <!-- <div class="thumbnail text-center"> <img onclick="change_image(this)" src="https://i.imgur.com/Rx7uKd0.jpg" width="70"> <img onclick="change_image(this)" src="https://i.imgur.com/Dhebu4F.jpg" width="70"> </div> -->
+                        <!-- </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="product p-4">
+                            <div class="d-flex justify-content-between align-items-center"> -->
+                                <!-- <div class="d-flex align-items-center"> <a href="">Back</a></div> -->
+                            <!-- </div>
+                            <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand">Store</span>
+                                <h5 class="text-uppercase">{{product?.name}}</h5>
+                                <div class="price d-flex flex-row align-items-center"> <span class="act-price">Price: {{product?.price}}</span> -->
+                                    <!-- <div class="ml-2"> <small class="dis-price">$59</small> <span>40% OFF</span> </div>
+                                </div>
+                            </div>
+                            <p class="about">some description</p>
+                            <div>Quantity: {{product?.quantity}}</div>
+                            <div class="sizes mt-5"> -->
+                                <!-- <h6 class="text-uppercase">Size</h6> <label class="radio"> <input type="radio" name="size" value="S" checked> <span>S</span> </label> <label class="radio"> <input type="radio" name="size" value="M"> <span>M</span> </label> <label class="radio"> <input type="radio" name="size" value="L"> <span>L</span> </label> <label class="radio"> <input type="radio" name="size" value="XL"> <span>XL</span> </label> <label class="radio"> <input type="radio" name="size" value="XXL"> <span>XXL</span> </label> -->
+                            <!-- </div>
+                            
+                            <div class="cart mt-4 align-items-center">
+                                <button class="btn btn-primary text-uppercase mr-2 px-4">Back</button>
+
+                                <button class="btn btn-primary text-uppercase ml-5">Add to cart</button> <i class="fa fa-heart text-muted"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div> -->
+    <div class="card m-5">
+        <!-- <div class="container-fliud"> -->
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+                    
+                    <div class="preview-pic tab-content">
+                      <div class="tab-pane active" id="pic-1"><img [src]="product?.imgURL" /></div>
+                      <!-- <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
+                      <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
+                      <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
+                      <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div> -->
+                    </div>
+                    <ul class="preview-thumbnail nav nav-tabs">
+                      <li class="active"><a data-target="#pic-1" data-toggle="tab"><img [src]="product?.imgURL" /></a></li>
+                      <li><a data-target="#pic-2" data-toggle="tab"><img [src]="product?.imgURL" /></a></li>
+                      <li><a data-target="#pic-3" data-toggle="tab"><img [src]="product?.imgURL" /></a></li>
+                      <li><a data-target="#pic-4" data-toggle="tab"><img [src]="product?.imgURL" /></a></li>
+                      <li><a data-target="#pic-5" data-toggle="tab"><img [src]="product?.imgURL" /></a></li>
+                    </ul>
+                    
+                </div>
+                <div class="details col-md-6">
+                    <h3 class="product-title">{{product?.name}}</h3>
+                    <!-- <div class="rating">
+                        <div class="stars">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                        <span class="review-no">41 reviews</span>
+                    </div> -->
+                    <p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
+                    <h4 class="">current price: <span>{{product?.price}}</span></h4>
+                    <h4 class="">current Quanitiy: <span>{{product?.quantity}}</span></h4>
+
+                    <!-- <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p> -->
+                    <!-- <h5 class="sizes">sizes:
+                        <span class="size" data-toggle="tooltip" title="small">s</span>
+                        <span class="size" data-toggle="tooltip" title="medium">m</span>
+                        <span class="size" data-toggle="tooltip" title="large">l</span>
+                        <span class="size" data-toggle="tooltip" title="xtra large">xl</span>
+                    </h5> -->
+                    <!-- <h5 class="colors">colors:
+                        <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+                        <span class="color green"></span>
+                        <span class="color blue"></span>
+                    </h5> -->
+                    <h5></h5>
+                    <div class="action">
+                        <button type="button" class="btn btn-primary">add to Cart</button>
+                        <button type="button" class="btn btn-primary m-5">Back</button>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
+    </div>

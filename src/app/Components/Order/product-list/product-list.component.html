@@ -71,6 +71,8 @@
 
                  <div class="d-flex justify-content-between total font-weight-bold mt-4" >
                   <button class="btn btn-primary" (click)="addToCart(item)" [hidden]="item.quantity==0">add to cart</button>
+                  <!-- <button class="btn btn-primary" (click)="goToDetails(item.id)">Details</button> -->
+                  <a name="" id="" class="btn btn-primary" [routerLink]="['/Products',item.id]" role="button">Details</a>
                 </div> 
               </div>
             </div>

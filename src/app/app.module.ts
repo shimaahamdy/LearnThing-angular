@@ -13,6 +13,9 @@ import { LightBoxDirective } from './Directives/light-box.directive';
 import { EGPToUSDPipe } from './Pipes/egpto-usd.pipe';
 import { ShoppingCartComponent } from './Components/Order/shopping-cart/shopping-cart.component';
 import { OrderMakingComponent } from './Components/Order/order-making/order-making.component';
+import { NotfoundComponent } from './Components/notfound/notfound.component';
+import { MainLayoutComponent } from './Components/mainLayout/mainLayout.component';
+import { ProductDetailsComponent } from './Components/Order/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -25,11 +28,14 @@ import { OrderMakingComponent } from './Components/Order/order-making/order-maki
     LightBoxDirective,
     EGPToUSDPipe,
     ShoppingCartComponent,
-    OrderMakingComponent
+    OrderMakingComponent,
+    NotfoundComponent,
+    MainLayoutComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule, //router module as approuting module export router
     FormsModule
   ],
   providers: [],

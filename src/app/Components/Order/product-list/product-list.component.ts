@@ -1,5 +1,6 @@
 import { BuiltinType } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { Iproduct } from 'src/app/Models/iproduct';
 import { StaticProductsService } from 'src/app/Services/static-products.service';
 import { ICartViewModel } from 'src/app/ViewModels/IcartViewModel';
@@ -20,7 +21,8 @@ export class ProductListComponent implements OnInit ,OnChanges{
   //define Event
   @Output() addToCartItem:EventEmitter<ICartViewModel>;
   
-  constructor(private staticProdServ : StaticProductsService) { 
+  constructor(private staticProdServ : StaticProductsService,
+    private router:Router) { 
     // this.prodList = [
     //   {id:100,name:'C++',price:100,quantity:0,imgURL:'https://e3arabi.com/wp-content/uploads/2021/01/6038586442907648-1.png',categoryID:1},
     //   {id:200,name:'Java',price:100,quantity:2,imgURL:'https://e3arabi.com/wp-content/uploads/2021/01/6038586442907648-1.png',categoryID:2},
@@ -62,6 +64,11 @@ export class ProductListComponent implements OnInit ,OnChanges{
     console.log(cartModel);
    this.addToCartItem.emit(cartModel);
    
+  }
+
+  goToDetails(prdID:number)
+  {
+    this.router.navigate(['/Products',prdID]);
   }
 
 
